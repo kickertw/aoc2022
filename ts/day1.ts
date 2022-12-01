@@ -1,13 +1,10 @@
-var fs = require('fs');
-
-let data = fs.readFileSync('day1input.txt', 'utf8');
-let input = data.toString().split(/\r?\n/);;
+const data = await Deno.readTextFile('day1input.txt');
+const input = data.toString().split(/\r?\n/);
 
 let allCalories: number[] = [];
-let tempVal: number = 0;
-let counter: number = 0;
+let tempVal = 0;
 
-for (var val of input) {
+for (const val of input) {
     if (val != '') {
         tempVal += parseInt(val);
     } else {
