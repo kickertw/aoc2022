@@ -70,9 +70,10 @@ function getPart2ScoreTotal(baseScore: Tuple): number {
         const player1Val:string = vals[0];
         const winLoseDraw:string = vals[1];
 
+        // Set Base Score (For win/lose/draw)
         totalScore += baseScore[winLoseDraw];
     
-        // Add score (3 if draw, 6 if win)
+        // Add score (3 for scissors, 2 for paper, 1 for rock)
         if (player1Val == 'A') {
             switch(winLoseDraw) {
                 case 'X':   //lose by scissors
