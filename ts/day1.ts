@@ -1,5 +1,5 @@
-const data = await Deno.readTextFile('day1input.txt');
-const input = data.toString().split(/\r?\n/);
+import { readAndNewLineSplit } from "./utils/utils.ts";
+const input = await readAndNewLineSplit('day1input.txt');
 
 let allCalories: number[] = [];
 let tempVal = 0;
