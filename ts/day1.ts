@@ -1,5 +1,5 @@
 import { readAndNewLineSplit } from "./utils/utils.ts";
-const input = await readAndNewLineSplit('day1input.txt');
+const input = await readAndNewLineSplit('input.txt');
 
 let allCalories: number[] = [];
 let tempVal = 0;

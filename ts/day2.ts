@@ -1,5 +1,5 @@
 import { readAndNewLineSplit } from "./utils/utils.ts";
-const input = await readAndNewLineSplit('day2input.txt');
+const input = await readAndNewLineSplit('input.txt');
 
 interface Tuple {
     [key: string]: number;
