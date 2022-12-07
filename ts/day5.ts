@@ -1,5 +1,5 @@
 import Stack from './utils/stack.ts';
-import { readAndNewLineSplit, cloneArray } from "./utils/utils.ts";
+import { readAndNewLineSplit } from "./utils/utils.ts";
 
 const input = await readAndNewLineSplit('input.txt');
 
