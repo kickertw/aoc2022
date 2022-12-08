@@ -28,7 +28,49 @@ function p1FindAllVisableTrees(grid:number[][]):number {
     return retVal;
 }
 
+function getViewingDistance(currentTreeHeight:number, trees:number[], debug = false):number {
+    let counter = 1;
+
+    if (debug) console.log(`${currentTreeHeight} vs ${trees}`);
+
+    for(; counter < trees.length; counter++){
+        if (trees[counter] >= currentTreeHeight) break;
+    }
+
+    return counter;
+}
+
+function p2FindBestTree(grid:number[][]):number {
+    let retVal = 0;
+    const gridWidth = grid[0].length;
+    const gridHeight = grid.length;    
+    const tGrid = transpose2DArray(grid);
+
+    for(let row = 0; row < gridHeight; row++) {
+        for(let col = 0; col < gridWidth; col++) {
+            //edge trees are going to have a ZERO scenic score
+            if (row == 0 || row == gridHeight - 1 || col == 0 || col == gridWidth - 1) continue;
+
+            const treeHeight = grid[row][col];
+            const leftScore = getViewingDistance(treeHeight, grid[row].slice(0,col).reverse());
+
+            let debug = false;
+            if (row == 3) debug = true; 
+            const rightScore = getViewingDistance(treeHeight, grid[row].slice(col+1), debug);
+            const topScore = getViewingDistance(treeHeight, tGrid[col].slice(0,row).reverse());
+            const botScore = getViewingDistance(treeHeight, tGrid[col].slice(row+1));
+
+            const scenicScore = leftScore * rightScore * topScore * botScore;
+            console.log(`${row},${col} - ${leftScore} / ${rightScore} / ${topScore} / ${botScore}`);
+            retVal = scenicScore > retVal ? scenicScore : retVal;
+        }
+    }    
+
+    return retVal;
+}
+
 const grid = await create2DIntArray('input.txt');
 const p1Answer = p1FindAllVisableTrees(grid);
+const p2Answer = p2FindBestTree(grid);
 
-console.log(`P1 = ${p1Answer}`);
+console.log(`P1 = ${p1Answer}, P2 = ${p2Answer}`);
