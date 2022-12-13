@@ -6,6 +6,18 @@ class Monkey {
     test = 0;
     testTrueMonkeyIdx = 0;
     testFalseMonkeyIdx = 0;
+    inspectCounter = 0;
+}
+
+function replaceOld(operation:string | undefined, old:number): string {
+    if (!operation) return '';
+
+    let newFormula = operation;
+    while (newFormula.includes('old')) {
+        newFormula = newFormula.replace('old', old.toString());
+    }    
+
+    return newFormula
 }
 
 const inputs = await readAndNewLineSplit('input.txt');
@@ -26,15 +38,27 @@ for(let ii = 0; ii < inputs.length; ii++) {
 }
 
 // Running monkeys
-const totalRounds = 1;
+const totalRounds = 20;
 for(let ii = 0; ii < totalRounds; ii++) {
     for(let jj = 0; jj < monkeys.length; jj++) {
-        //inspect an item
+        //inspect items
         for(const item of monkeys[jj].items) {
-            let new = 0;
-            let newFormula = monkeys[jj].operation?.replace('old', item.toString());
-            eval(`new = ${newFormula}`);
-            if (new)
+            // deno-lint-ignore prefer-const
+            let newWorryLevel = 0;
+            let newFormula = replaceOld(monkeys[jj].operation, item);
+            newFormula = `newWorryLevel = Math.floor((${newFormula}) / 3);`;
+            eval(newFormula);
+
+            // Test and throw to another monkey
+            const nextMonkey = newWorryLevel % monkeys[jj].test === 0 ? monkeys[jj].testTrueMonkeyIdx : monkeys[jj].testFalseMonkeyIdx;
+            monkeys[nextMonkey].items.push(newWorryLevel);
         }
+
+        monkeys[jj].inspectCounter += monkeys[jj].items.length;
+        monkeys[jj].items = [];
     }
 }
+
+let inspectArray = monkeys.map(m => { return m.inspectCounter });
+inspectArray = inspectArray.sort((a,b) => { return a-b;}).reverse();
+console.log(`P1 = ${inspectArray[0]} * ${inspectArray[1]} = ${inspectArray[0] * inspectArray[1]}`);
