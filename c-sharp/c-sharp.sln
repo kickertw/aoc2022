@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "c-sharp", "c-sharp.csproj", "{476DDBD5-FBFD-4279-AF10-CF9D79AD9A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AocDotnetTest", "..\AocDotnetTest\AocDotnetTest.csproj", "{7F4E30E5-FC15-457C-99DF-1A8718F90046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{476DDBD5-FBFD-4279-AF10-CF9D79AD9A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476DDBD5-FBFD-4279-AF10-CF9D79AD9A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476DDBD5-FBFD-4279-AF10-CF9D79AD9A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476DDBD5-FBFD-4279-AF10-CF9D79AD9A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4E30E5-FC15-457C-99DF-1A8718F90046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4E30E5-FC15-457C-99DF-1A8718F90046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4E30E5-FC15-457C-99DF-1A8718F90046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4E30E5-FC15-457C-99DF-1A8718F90046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25D34343-15EF-448C-9D34-17F4CFEFD6CE}
+	EndGlobalSection
+EndGlobal
