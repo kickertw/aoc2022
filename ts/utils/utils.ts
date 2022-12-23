@@ -18,3 +18,10 @@ export async function create2DIntArray(filepath: string): Promise<number[][]> {
 export function transpose2DArray<T>(array:T[][]):T[][] {
     return array[0].map((_, colIndex) => array.map(row => row[colIndex]));
 }
+
+// deno-lint-ignore no-explicit-any
+export function swapArrayElements(array: any[], index1: number, index2: number) {
+    const temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp;
+}
