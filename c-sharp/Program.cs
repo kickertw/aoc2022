@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using aoc2022;
+
 var inputs = File.ReadLines("input.txt");
 
 #region Solved Problems
@@ -25,3 +27,7 @@ var inputs = File.ReadLines("input.txt");
 // }
 // Console.WriteLine($"P2 = {minSteps}");
 #endregion
+
+var cave = Day14.CreateCave(inputs.ToList());
+var p1 = Day14.DropSand(cave, (500, 0));
+Console.WriteLine($"P1 = {p1}");
