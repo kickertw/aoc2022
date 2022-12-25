@@ -44,39 +44,44 @@ namespace aoc2022
             return retVal;
         }
     
-        public static int DropSand(HashSet<(int, int)> cave, (int, int) start)
+        public static int DropSand(HashSet<(int, int)> cave, (int, int) start, bool part2 = false)
         {
+            var tempCave = new HashSet<(int, int)>(cave);
             var counter = 0;
-            var hitTheAbyss = false;
-            var abyssYStart = cave.Min(i => i.Item1);
+            var floor = tempCave.Max(i => i.Item2) + 1;
 
-            while (!hitTheAbyss)
+            while (true)
             {
                 var sand = start;
                 while(true)
                 {
-                    if (sand.Item2 == abyssYStart) {
-                        hitTheAbyss = true;
-                        break;
+                    if (!part2 && sand.Item2 == floor) {
+                        return counter;
                     }
 
-                    if (!cave.Contains((sand.Item1, sand.Item2 + 1))) {
+                    var atLowestPoint = part2 && sand.Item2 == floor;
+                    if (!tempCave.Contains((sand.Item1, sand.Item2 + 1)) && !atLowestPoint) {
                         sand.Item2++;
-                    } else if (!cave.Contains((sand.Item1 - 1, sand.Item2 + 1))) {
+                    } else if (!tempCave.Contains((sand.Item1 - 1, sand.Item2 + 1)) && !atLowestPoint) {
                         sand.Item1--;
                         sand.Item2++;
-                    } else if (!cave.Contains((sand.Item1 + 1, sand.Item2 + 1))) {
+                    } else if (!tempCave.Contains((sand.Item1 + 1, sand.Item2 + 1)) && !atLowestPoint) {
                         sand.Item1++;
                         sand.Item2++;
                     } else {
+                        if (part2 && sand == start) {
+                            return counter + 1;
+                        }                        
+
+                        // When the sand can't move...
                         counter++;
-                        cave.Add(sand);                        
+                        tempCave.Add(sand);
                         break;
                     }
                 }
             }
 
-            return counter;            
+            throw new Exception("Should never get here");
         }
     }
 

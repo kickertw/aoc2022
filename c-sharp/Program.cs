@@ -30,4 +30,5 @@ var inputs = File.ReadLines("input.txt");
 
 var cave = Day14.CreateCave(inputs.ToList());
 var p1 = Day14.DropSand(cave, (500, 0));
-Console.WriteLine($"P1 = {p1}");
+var p2 = Day14.DropSand(cave, (500, 0), true);
+Console.WriteLine($"P1 = {p1} / P2 = {p2}");
