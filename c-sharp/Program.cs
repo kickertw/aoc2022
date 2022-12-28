@@ -26,9 +26,14 @@ var inputs = File.ReadLines("input.txt");
 //     }    
 // }
 // Console.WriteLine($"P2 = {minSteps}");
+
+// Day 14
+//var cave = Day14.CreateCave(inputs.ToList());
+//var p1 = Day14.DropSand(cave, (500, 0));
+//var p2 = Day14.DropSand(cave, (500, 0), true);
+//Console.WriteLine($"P1 = {p1} / P2 = {p2}");
 #endregion
 
-var cave = Day14.CreateCave(inputs.ToList());
-var p1 = Day14.DropSand(cave, (500, 0));
-var p2 = Day14.DropSand(cave, (500, 0), true);
-Console.WriteLine($"P1 = {p1} / P2 = {p2}");
+var (sensors, beacons) = Day15.ParseSensorsAndBeacons(inputs.ToList());
+var p1 = Day15.GetInvalidPositions(sensors, beacons, 2000000);
+Console.WriteLine($"P1 = {p1}");
