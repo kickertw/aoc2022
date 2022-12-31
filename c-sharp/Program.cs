@@ -37,3 +37,5 @@ var inputs = File.ReadLines("input.txt");
 var (sensors, beacons) = Day15.ParseSensorsAndBeacons(inputs.ToList());
 var p1 = Day15.GetInvalidPositions(sensors, beacons, 2000000);
 Console.WriteLine($"P1 = {p1}");
+var p2 = Day15.GetTuningFrequency(sensors, beacons, 4000000);
+Console.WriteLine($"P2 = {p2}");
